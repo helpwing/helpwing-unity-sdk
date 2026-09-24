@@ -4,7 +4,7 @@ Versions are immutable once tagged, so every line here describes something alrea
 released. The tag is the release: `v0.1.0` is 0.1.0, and Package Manager installs it by
 `#v0.1.0` on the git URL.
 
-## Unreleased
+## 0.1.0
 
 - **First release.** The Helpwing support chat for Unity 2022.3 and newer, a port of
   `@helpwing/react-native` with the same behaviour:
