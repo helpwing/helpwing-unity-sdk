@@ -1,0 +1,13 @@
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# dotnet test output
+Tests~/**/bin/
+Tests~/**/obj/
+TestResults/
+*.csproj.user
+
+# Unity writes these next to a package opened from disk
+*.unitypackage

@@ -1,0 +1,35 @@
+{
+  "name": "ru.fanyagin.helpwing",
+  "version": "0.1.0",
+  "displayName": "Helpwing",
+  "description": "The Helpwing support chat for Unity games and apps. Game chat, website chat and email tickets land in the same inbox.",
+  "unity": "2022.3",
+  "license": "MIT",
+  "documentationUrl": "https://helpwing.app/docs/unity",
+  "changelogUrl": "https://github.com/helpwing/helpwing-unity-sdk/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/helpwing/helpwing-unity-sdk/blob/main/LICENSE",
+  "keywords": [
+    "helpwing",
+    "support",
+    "chat",
+    "customer support",
+    "helpdesk"
+  ],
+  "author": {
+    "name": "Helpwing",
+    "url": "https://helpwing.app"
+  },
+  "dependencies": {
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.unitywebrequesttexture": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0"
+  },
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "A scene script that sets up the client and the drop-in chat from code, with a signed-in player.",
+      "path": "Samples~/Demo"
+    }
+  ]
+}

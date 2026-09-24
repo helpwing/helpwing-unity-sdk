@@ -1,0 +1,25 @@
+# The core client, markdown and presentation suites, run with plain dotnet: Runtime/Core uses
+# nothing from UnityEngine, so none of it needs an editor or a licence.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - run: dotnet test "Tests~/Helpwing.Core.Tests" --configuration Release
