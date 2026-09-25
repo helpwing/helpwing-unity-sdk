@@ -23,7 +23,9 @@ namespace Helpwing
         public string Title { get; set; } = "";
         public string Greeting { get; set; } = "";
         public string OfflineMessage { get; set; } = "";
-        /// <summary>Language code → field (<c>title</c>, <c>greeting</c>, <c>offline_message</c>) → text.</summary>
+        /// <summary>What the visitor sees while an agent types. May contain <c>{name}</c>. Blank when the project wrote none.</summary>
+        public string TypingText { get; set; } = "";
+        /// <summary>Language code → field (<c>title</c>, <c>greeting</c>, <c>offline_message</c>, <c>typing_text</c>) → text.</summary>
         public Dictionary<string, Dictionary<string, string>> Translations { get; set; } = new Dictionary<string, Dictionary<string, string>>();
         public string DefaultLocale { get; set; } = "";
         public bool RequireEmail { get; set; }
@@ -51,6 +53,7 @@ namespace Helpwing
                 Title = Json.Str(data, "title"),
                 Greeting = Json.Str(data, "greeting"),
                 OfflineMessage = Json.Str(data, "offline_message"),
+                TypingText = Json.Str(data, "typing_text"),
                 DefaultLocale = Json.Str(data, "default_locale"),
                 RequireEmail = Json.Bool(data, "require_email"),
                 ShowAgentAvailability = Json.Bool(data, "show_agent_availability"),
@@ -85,6 +88,7 @@ namespace Helpwing
                 case "title": return Title;
                 case "greeting": return Greeting;
                 case "offline_message": return OfflineMessage;
+                case "typing_text": return TypingText;
                 default: return "";
             }
         }

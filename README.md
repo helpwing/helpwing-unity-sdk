@@ -145,11 +145,17 @@ Your game knows what language it is in and already has a way to say so. Shipping
 dictionary of our own would mean deciding which of two translation systems wins on one
 screen.
 
-**What the project wrote**: the header, the greeting and the offline message. Those are
-translated in the dashboard under **Chat widget → Appearance**, and picked by the client's
-**Locale** field. Left blank, it uses the device language. `ru-RU` finds `ru`, and a
-language the project has not translated falls back to what it wrote without one, never to a
-stock line of ours. Read them with `client.Copy` if you draw your own empty state.
+**What the project wrote**: the header, the greeting, the offline message and the typing
+text. Those are translated in the dashboard under **Chat widget → Appearance**, and picked
+by the client's **Locale** field. Left blank, it uses the device language. `ru-RU` finds
+`ru`, and a language the project has not translated falls back to what it wrote without one,
+never to a stock line of ours. Read them with `client.Copy` if you draw your own empty
+state.
+
+The typing text (`client.Copy.TypingText`) is what the transcript shows while an agent is
+writing a reply, with every `{name}` swapped for the agent's name. A project that has not
+written one falls back to `SupportLabels.typing`, the built-in `SupportChatView` already
+uses — so an integrator's own override still applies until the project writes its own text.
 
 ## Colours
 

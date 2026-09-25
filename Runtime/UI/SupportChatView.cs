@@ -260,12 +260,19 @@ namespace Helpwing.UI
             availability.text = config != null && config.IsOnline ? labels.online : labels.away;
             offlineBanner.style.display = state.Offline ? DisplayStyle.Flex : DisplayStyle.None;
             typingLabel.style.display = state.Typing != null ? DisplayStyle.Flex : DisplayStyle.None;
-            typingLabel.text = state.Typing != null ? labels.Typing(state.Typing.Name) : "";
+            typingLabel.text = state.Typing != null ? TypingText(state.Typing.Name) : "";
             branding.style.display = config != null && config.ShowBranding ? DisplayStyle.Flex : DisplayStyle.None;
             email.style.display = AskForEmail() ? DisplayStyle.Flex : DisplayStyle.None;
             UpdateComposer();
 
             Transcript(state);
+        }
+
+        /// <summary>The project's own typing text with <c>{name}</c> filled in, else the built-in label.</summary>
+        private string TypingText(string name)
+        {
+            var text = client.Copy.TypingText;
+            return text.Length > 0 ? text.Replace("{name}", name) : labels.Typing(name);
         }
 
         private void Transcript(ChatState state)

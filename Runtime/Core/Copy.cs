@@ -9,6 +9,7 @@ namespace Helpwing
         public const string Title = "title";
         public const string Greeting = "greeting";
         public const string OfflineMessage = "offline_message";
+        public const string TypingText = "typing_text";
 
         /// <summary>The project's translation for <paramref name="locale"/>, else what it wrote without one. Never a stock line.</summary>
         public static string ForLocale(WidgetConfig config, string field, string locale = null)

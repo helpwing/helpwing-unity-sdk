@@ -19,6 +19,11 @@ namespace Helpwing.Tests
             ["ru"] = new Dictionary<string, string> { ["greeting"] = "Здравствуйте! Чем можем помочь?" },
         });
 
+        private static readonly WidgetConfig TypingTranslated = Config(new Dictionary<string, Dictionary<string, string>>
+        {
+            ["ru"] = new Dictionary<string, string> { ["typing_text"] = "{name} печатает…" },
+        });
+
         [Test]
         public void ReturnsTheTranslationTheProjectWrote()
         {
@@ -39,6 +44,14 @@ namespace Helpwing.Tests
         public void IsEmptyBeforeTheConfigArrives()
         {
             Assert.That(Copy.ForLocale(null, Copy.Greeting, "ru"), Is.EqualTo(""));
+        }
+
+        [Test]
+        public void ResolvesTypingTextLikeOtherProjectCopy()
+        {
+            Assert.That(Copy.ForLocale(TypingTranslated, Copy.TypingText, "ru"), Is.EqualTo("{name} печатает…"));
+            Assert.That(Copy.ForLocale(TypingTranslated, Copy.TypingText, "de"), Is.EqualTo(""));
+            Assert.That(Copy.ForLocale(Config(), Copy.TypingText), Is.EqualTo(""));
         }
 
         [Test]

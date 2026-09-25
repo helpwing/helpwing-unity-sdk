@@ -45,17 +45,20 @@ namespace Helpwing
     /// <summary>The project's own words, resolved against the client's locale.</summary>
     public readonly struct ProjectCopy
     {
-        public ProjectCopy(string title, string greeting, string offlineMessage)
+        public ProjectCopy(string title, string greeting, string offlineMessage, string typingText = "")
         {
             Title = title;
             Greeting = greeting;
             OfflineMessage = offlineMessage;
+            TypingText = typingText ?? "";
         }
 
         /// <summary>Blank when the project wrote no heading.</summary>
         public string Title { get; }
         public string Greeting { get; }
         public string OfflineMessage { get; }
+        /// <summary>May contain <c>{name}</c>. Blank when the project wrote none.</summary>
+        public string TypingText { get; }
     }
 
     /// <summary>
@@ -143,7 +146,8 @@ namespace Helpwing
         public ProjectCopy Copy => new ProjectCopy(
             Helpwing.Copy.ForLocale(State.Config, Helpwing.Copy.Title, Locale),
             Helpwing.Copy.ForLocale(State.Config, Helpwing.Copy.Greeting, Locale),
-            Helpwing.Copy.ForLocale(State.Config, Helpwing.Copy.OfflineMessage, Locale));
+            Helpwing.Copy.ForLocale(State.Config, Helpwing.Copy.OfflineMessage, Locale),
+            Helpwing.Copy.ForLocale(State.Config, Helpwing.Copy.TypingText, Locale));
 
         /// <summary>Ready means the project has a chat and it is on.</summary>
         public bool IsReady => State.Status == ChatStatus.Ready;
